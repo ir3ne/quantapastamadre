@@ -2,6 +2,9 @@ import React from 'react';
 import './App.css';
 import './scss/all.scss'
 import pastaMadre from './pasta-madre-logo.svg';
+import recipe from './recipe.svg';
+import fornoBrisa from './forno-brisa-logo.png';
+import reset from './reset.svg';
 
 class App extends React.Component {
   constructor(props) {
@@ -10,7 +13,8 @@ class App extends React.Component {
       quantity: 0,
       twoFlours: 0,
       madre: 0,
-      water: 0
+      water: 0,
+      salt: 0
     }
 
     this.getFlourQuantity = this.getFlourQuantity.bind(this);
@@ -46,30 +50,47 @@ class App extends React.Component {
     return (
       <div>
         <div className="app">
-          <div className="mother-container">
-            <img className="mother" src={pastaMadre} alt=""/>
-          </div>
-          <p>Inserisci i grammi di farina</p>
-          <div>
-            <div>
-              <span>
-              <input 
-              type="number"
-              id="flour"
-              />
-              </span>
-              <span> g</span>
+          <div className="top">
+            <div className="top-left">
+              <img src={recipe} alt="recipe"/>
+            </div>
+            <div className="top-right">
+              <span>Thanks to</span><img src={fornoBrisa} alt="forno brisa logo"/>
             </div>
           </div>
-          <p>puoi calcolare la quantità degli altri ingredienti cliccando qui sotto 
-            <span role="img" aria-label="down pointing">👇</span>
-          </p>
-          <button onClick={this.getFlourQuantity}><span>Calcola</span></button>
-          <a>Reset</a>
-          <div id="showAlert" style={{display: "none"}}>
-            <p>Inserisci la quantità di farina e poi clicca 'Calcola'</p>
-          </div>
-          <div id="showIngredientsQuantity" style={{display: "none"}}>
+          <div className="app-container">
+            <header class="header">
+              <div className="mother-container">
+                <img className="mother" src={pastaMadre} alt="pasta madre logo"/>
+              </div>
+              <h1>
+                <span class="title-container">
+                  <span class="title">quantapastamadre?</span>
+                </span>
+              </h1>
+              
+            </header>
+            <main>
+              <p class="instruction">Inserisci i grammi di farina <span role="img" aria-label="down pointing">👇</span></p>
+              <div>
+                <div class="flex-v-center">
+                  <input 
+                  type="number"
+                  id="flour"
+                  />
+                  <span class="quantity">g</span>
+                </div>
+              </div>
+              <div className="action">
+                <button onClick={this.getFlourQuantity} class="calc">Calcola</button>
+                <button class="reset"><img src={reset} alt=""/></button>
+              </div>
+            </main>
+           
+            <div id="showAlert" style={{display: "none"}}>
+              <p>Inserisci la quantità di farina e poi clicca 'Calcola'</p>
+            </div>
+            <div id="showIngredientsQuantity" style={{display: "none"}}>
             <b>Prima fase</b>
             <p>Farina unica: {this.state.quantity} g</p>
               <i>oppure</i>
@@ -79,6 +100,7 @@ class App extends React.Component {
             <b>Seconda fase</b>
             <p>Sale: ---</p>
             <p>Acqua: qui acqua rimanente</p>
+          </div>
           </div>
         </div>
       </div>

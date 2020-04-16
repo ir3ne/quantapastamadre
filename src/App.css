@@ -2,23 +2,3 @@
   width: 100%;
   text-align: center;
 }
-
-.mother {
-  width: 100%;
-  max-width: 80px;
-  margin-bottom: 40px;
-}
-
-button {
-  display: inline-block;
-  font-weight: 600;
-  position: relative;
-  white-space: nowrap;
-  color: #222;
-  font-size: 20px;
-  border: 2px solid #000;
-  border-radius: 6px;
-  background-color: #fff;
-  padding: 0.375em 0.5em 0.1875em;
-  text-decoration: none;
-}

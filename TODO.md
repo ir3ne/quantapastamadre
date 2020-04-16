@@ -1,4 +1,4 @@
 - loader con mother piccola che gira prima di caricare le fasi
 - alert per valore nullo
 - aggiungere invio per calcola
-- 
+- COME importare svg in react
