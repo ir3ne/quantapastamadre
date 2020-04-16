@@ -1,8 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
 .app {
   margin: 0 auto;
   font-size: 20px;
   line-height: 22px;
   padding: .75rem 1rem;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
 }
 
 .top {
@@ -49,22 +58,40 @@ h1 {
   }
 }
 
+main {
+  margin: 0 30px;
+}
+
 .instruction {
   margin-bottom: 6px;
 }
 
-input {
+.quantity-container {
+  display: flex;
   border: 2px solid #FEBD2D;
   border-radius: 6px;
   font-size: 28px;
   padding: 5px 6px;
-  width: 84%;
+  width: 100%;
+}
+
+input {
+  border: 0;
+  width: 100%;
+  text-align: right;
+  font-size: 38px;
 }
 
 .quantity {
   font-size: 48px;
   line-height: 48px;
   margin-left: auto;
+  font-size: 48px;
+  line-height: 48px;
+  margin-left: auto;
+  width: 26px;
+  display: inline-block;
+  color: lightgrey;
 }
 
 .flex-v-center {
@@ -97,5 +124,31 @@ button {
 
   &.reset {
     margin-left: auto;
+    background-color: #DDDDDD;
+  }
+}
+
+.info {
+  position: relative;
+  border-radius: 6px;
+  background-color: #2F2F2F;
+  color: white;
+  margin: 20px 0;
+  padding: 20px;
+  transform: translateY(500px);
+  transition: transform 1.5s ease;
+
+  #close-info {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    width: 18px;
+    height: 18px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 }
