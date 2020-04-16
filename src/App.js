@@ -1,6 +1,6 @@
 import React from 'react';
-import './mvp.css';
-import mother from './mother.svg';
+import './App.css';
+import pastaMadre from './pasta-madre-logo.svg';
 
 class App extends React.Component {
   constructor(props) {
@@ -45,22 +45,26 @@ class App extends React.Component {
     return (
       <div>
         <div className="app">
-          <img className="mother" src={mother} alt=""/>
+          <div className="mother-container">
+            <img className="mother" src={pastaMadre} alt=""/>
+          </div>
           <p>Inserisci i grammi di farina</p>
           <div>
-          <span>
-            <input 
-            type="number"
-            id="flour"
-            />
-          </span>
-          <span>g</span>
+            <div>
+              <span>
+              <input 
+              type="number"
+              id="flour"
+              />
+              </span>
+              <span> g</span>
+            </div>
           </div>
           <p>puoi calcolare la quantità degli altri ingredienti cliccando qui sotto 
             <span role="img" aria-label="down pointing">👇</span>
           </p>
-          <button onClick={this.getFlourQuantity}>Calcola</button>
-          <button>Reset</button>
+          <button onClick={this.getFlourQuantity}><span>Calcola</span></button>
+          <a>Reset</a>
           <div id="showAlert" style={{display: "none"}}>
             <p>Inserisci la quantità di farina e poi clicca 'Calcola'</p>
           </div>
@@ -71,6 +75,9 @@ class App extends React.Component {
             <p>{this.state.twoFlours} g di un tipo di farina + {this.state.twoFlours} g di un tipo di farina</p>
             <p>Lievito madre: {this.state.madre} g</p>
             <p>Acqua: {this.state.water} g</p>
+            <b>Seconda fase</b>
+            <p>Sale: ---</p>
+            <p>Acqua: qui acqua rimanente</p>
           </div>
         </div>
       </div>
