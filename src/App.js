@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './scss/all.scss'
 import pastaMadre from './pasta-madre-logo.svg';
 
 class App extends React.Component {
