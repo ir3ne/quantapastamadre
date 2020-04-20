@@ -5,3 +5,4 @@
 - focus subito sull'input
 - install tailwind
 - no grammi add shake to lievito logo with baloon curier
+- aggiornare grammi una volta comparso il display dei grammi

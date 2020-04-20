@@ -1,0 +1,27 @@
+.madre-ingredients {
+  font-size: 1rem;
+  line-height: 1.2rem;
+  background-color: #AAFEFD;
+  border-radius: 10px;
+  padding: 6px 20px;
+  margin: 30px 15px 0 15px;
+
+  &-title {
+    font-size: .8rem;
+  }
+
+  &__highlight {
+    display: inline-block;
+    transform: rotate(-1deg);
+    position: relative;
+    z-index: 0;
+    background-color: #fff;
+    padding: 2px;
+
+      span {
+      position: relative;
+      display: inline-block;
+      transform: rotate(1deg);
+      }
+    }
+}

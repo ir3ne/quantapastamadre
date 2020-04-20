@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.css';
 import './scss/all.scss'
-import pastaMadre from './pasta-madre-logo.svg';
+import pastaMadre from './assets/pasta-madre-logo.svg';
 import recipe from './recipe.svg';
 import fornoBrisa from './forno-brisa-logo.png';
-import reset from './reset.svg';
+// import closeIcon from './close-icon.js'
+// import reset from './reset.svg';
 import close from './close.svg';
+import Loader from './components/Loader/Loader.js';
+import Ingredients from './components/Ingredients/Ingredients';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,11 +18,26 @@ class App extends React.Component {
       twoFlours: 0,
       madre: 0,
       water: 0,
-      salt: 0
+      salt: 0,
+      loader: false,
+      getIngredients: false
     }
 
     this.getFlourQuantity = this.getFlourQuantity.bind(this);
-    this.showAlert = this.showAlert.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.showCalc = this.showCalc.bind(this);
+  }
+
+  actions(num) {
+    if (num > 0) {
+      return (
+       <button className="calc" onClick={this.showCalc}>Calcola</button>
+      );
+    } else {
+      return (
+       <button className="calc" disabled>Calcola</button>
+      );
+    }
   }
 
   showInfo() {
@@ -29,31 +47,42 @@ class App extends React.Component {
     }, 2000);
   }
 
-  showAlert() {
-    const containerAlert = document.getElementById("showAlert");
-    containerAlert.style.display = "block";
-    setInterval(() => {
-      containerAlert.style.display = "none";  
-    }, 3000);
+  closeInfo() {
+    const info = document.getElementById('info');
+    info.style.display = 'none';
+  }
+
+  showCalc() {
+    const appContainer = document.querySelector(".app-container");
+    appContainer.style.transform = "translateY(-122px)";
+    this.closeInfo();
+    this.setState({
+      loader: true
+    });
+    setTimeout(() => {
+      this.setState({
+        loader: false,
+        getIngredients: true
+      });
+    }, 2000);
   }
 
   getFlourQuantity() {
     const flour = document.getElementById("flour").value;
-    const containerIngredients = document.getElementById("showIngredientsQuantity");
-    if (flour <= 0) {
-      this.showAlert();
-    } else {
-      this.setState(() => {
-        return {
-          quantity: flour,
-          twoFlours: flour / 2,
-          madre: 150 * flour / 500,
-          water: 180 * flour / 500,
-          salt: 20 * flour / 500
-        }
-      });
-      containerIngredients.style.display = "block";
-    }
+    this.setState(() => {
+      return {
+        quantity: flour,
+        twoFlours: flour / 2,
+        madre: 150 * flour / 500,
+        water: 180 * flour / 500,
+        salt: 20 * flour / 500
+      }
+    });
+  }
+
+  handleChange(event) {
+    this.setState({quantity: event.target.value});
+    this.actions();
   }
 
   componentDidMount() {
@@ -73,54 +102,50 @@ class App extends React.Component {
             </div>
           </div>
           <div className="app-container">
-            <header class="header">
+            <header className="header">
               <div className="mother-container">
                 <img className="mother" src={pastaMadre} alt="pasta madre logo"/>
               </div>
               <h1>
-                <span class="title-container">
-                  <span class="title">quantapastamadre?</span>
+                <span className="title-container">
+                  <span className="title">quantapastamadre?</span>
                 </span>
               </h1>
               
             </header>
             <main>
-              <p class="instruction">Inserisci i grammi di farina <span role="img" aria-label="down pointing">👇</span></p>
+              <p className="instruction">Inserisci i grammi di farina <span role="img" aria-label="down pointing">👇</span></p>
               <div>
-                <div class="flex-v-center">
+                <div className="flex-v-center">
                   <div className="quantity-container">
                     <input 
                     type="number"
                     id="flour"
+                    onChange={this.handleChange}
                     />
-                    <div class="quantity">g</div>
+                    <div className="quantity">g</div>
                   </div>
                 </div>
               </div>
               <div className="action">
-                <button onClick={this.getFlourQuantity} class="calc">Calcola</button>
-                <button class="reset"><img src={reset} alt=""/></button>
+              {this.actions(this.state.quantity)}
               </div>
               <div id="info" className="info">
-              <span id="close-info"><img src={close} alt=""/></span>
+              <span id="close-info" onClick={this.closeInfo}>{<img src={close} alt=""/>}</span>
               Inserisci i grammi di farina che vuoi usare e verranno calcolate le giuste quantità degli altri ingredienti per fare un pane eccellente.
               </div>
             </main>
-           
-            <div id="showAlert" style={{display: "none"}}>
-              <p>Inserisci la quantità di farina e poi clicca 'Calcola'</p>
-            </div>
-            <div id="showIngredientsQuantity" style={{display: "none"}}>
-            <b>Prima fase</b>
-            <p>Farina unica: {this.state.quantity} g</p>
-              <i>oppure</i>
-            <p>{this.state.twoFlours} g di un tipo di farina + {this.state.twoFlours} g di un tipo di farina</p>
-            <p>Lievito madre: {this.state.madre} g</p>
-            <p>Acqua: {this.state.water} g</p>
-            <b>Seconda fase</b>
-            <p>Sale: {this.state.salt}</p>
-            <p>Acqua: qui acqua rimanente</p>
-          </div>
+            {this.state.loader ? <Loader/> : null}
+            {this.state.getIngredients ?
+            <Ingredients 
+              quantity={this.state.quantity} 
+              twoFlours={this.state.twoFlours} 
+              madre={this.state.madre} 
+              water={this.state.water} 
+              salt={this.state.salt} 
+            /> 
+            : null
+             }
           </div>
         </div>
       </div>
