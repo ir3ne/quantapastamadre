@@ -1,14 +1,12 @@
 import React from 'react';
 import './App.css';
 import './scss/all.scss'
-import pastaMadre from './assets/pasta-madre-logo.svg';
-import recipe from './recipe.svg';
-import fornoBrisa from './forno-brisa-logo.png';
-// import closeIcon from './close-icon.js'
-// import reset from './reset.svg';
-import close from './close.svg';
 import Loader from './components/Loader/Loader.js';
 import Ingredients from './components/Ingredients/Ingredients';
+import TopBar from './components/TopBar/TopBar.js';
+import AppTitle from './components/AppTitle/AppTitle.js';
+import Info from './components/Info/Info.js';
+import Logo from './components/Logo/Logo.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +21,6 @@ class App extends React.Component {
       getIngredients: false
     }
 
-    this.getFlourQuantity = this.getFlourQuantity.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.showCalc = this.showCalc.bind(this);
   }
@@ -47,11 +44,6 @@ class App extends React.Component {
     }, 2000);
   }
 
-  closeInfo() {
-    const info = document.getElementById('info');
-    info.style.display = 'none';
-  }
-
   showCalc() {
     const appContainer = document.querySelector(".app-container");
     appContainer.style.transform = "translateY(-122px)";
@@ -67,19 +59,6 @@ class App extends React.Component {
     }, 2000);
   }
 
-  getFlourQuantity() {
-    const flour = document.getElementById("flour").value;
-    this.setState(() => {
-      return {
-        quantity: flour,
-        twoFlours: flour / 2,
-        madre: 150 * flour / 500,
-        water: 180 * flour / 500,
-        salt: 20 * flour / 500
-      }
-    });
-  }
-
   handleChange(event) {
     this.setState({quantity: event.target.value});
     this.actions();
@@ -93,25 +72,11 @@ class App extends React.Component {
     return (
       <div>
         <div className="app">
-          <div className="top">
-            <div className="top-left">
-              <img src={recipe} alt="recipe"/>
-            </div>
-            <div className="top-right">
-              <span>Thanks to</span><img src={fornoBrisa} alt="forno brisa logo"/>
-            </div>
-          </div>
+          <TopBar />
           <div className="app-container">
             <header className="header">
-              <div className="mother-container">
-                <img className="mother" src={pastaMadre} alt="pasta madre logo"/>
-              </div>
-              <h1>
-                <span className="title-container">
-                  <span className="title">quantapastamadre?</span>
-                </span>
-              </h1>
-              
+              <Logo />
+              <AppTitle />
             </header>
             <main>
               <p className="instruction">Inserisci i grammi di farina <span role="img" aria-label="down pointing">👇</span></p>
@@ -130,10 +95,7 @@ class App extends React.Component {
               <div className="action">
               {this.actions(this.state.quantity)}
               </div>
-              <div id="info" className="info">
-              <span id="close-info" onClick={this.closeInfo}>{<img src={close} alt=""/>}</span>
-              Inserisci i grammi di farina che vuoi usare e verranno calcolate le giuste quantità degli altri ingredienti per fare un pane eccellente.
-              </div>
+              <Info />
             </main>
             {this.state.loader ? <Loader/> : null}
             {this.state.getIngredients ?

@@ -1,8 +1,8 @@
 - loader con mother piccola che gira prima di caricare le fasi
-- alert per valore vuoto
-- aggiungere invio per calcola
 - COME importare svg in react
 - focus subito sull'input
-- install tailwind
-- no grammi add shake to lievito logo with baloon curier
 - aggiornare grammi una volta comparso il display dei grammi
+- aggiungere x nell'input per cancellare il valore
+- spostare funzione get ingredients dentro Ingredients
+- aggiungi popup
+- add favicon in assets

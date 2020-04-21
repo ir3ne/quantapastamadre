@@ -1,6 +1,23 @@
 import React from 'react';
 
 class Ingredients extends React.Component {
+  getFlourQuantity() {
+    const flour = document.getElementById("flour").value;
+    this.setState(() => {
+      return {
+        quantity: flour,
+        twoFlours: flour / 2,
+        madre: 150 * flour / 500,
+        water: 180 * flour / 500,
+        salt: 20 * flour / 500
+      }
+    });
+  }
+
+  componentDidMount() {
+    this.getFlourQuantity();
+  }
+  
   render() {
    return (
     <div className="madre-ingredients">
