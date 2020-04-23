@@ -1,12 +1,8 @@
 import React from 'react';
 import close from '../../assets/close.svg';
-
+import { closeInfo } from '../../common/common.js';
 const Info = () => {
-  const closeInfo = () => {
-    const info = document.getElementById('info');
-    info.style.display = 'none';
-  }
-
+  
   return (
     <div id="info" className="info">
       <span id="close-info" onClick={closeInfo}><img src={close} alt=""/></span>

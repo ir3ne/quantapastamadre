@@ -1,6 +1,12 @@
 import React from 'react';
 import './App.css';
 import './scss/all.scss'
+import {
+  FLOUR_BASE,
+  MADRE_BASE,
+  WATER_BASE,
+  SALT_BASE
+} from './common/constants.js';
 import Loader from './components/Loader/Loader.js';
 import Ingredients from './components/Ingredients/Ingredients';
 import TopBar from './components/TopBar/TopBar.js';
@@ -22,19 +28,32 @@ class App extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
-    this.showCalc = this.showCalc.bind(this);
+    this.getResult = this.getResult.bind(this);
   }
 
   actions(num) {
     if (num > 0) {
       return (
-       <button className="calc" onClick={this.showCalc}>Calcola</button>
+       <button className="calc" onClick={this.getResult}>Calcola</button>
       );
     } else {
       return (
        <button className="calc" disabled>Calcola</button>
       );
     }
+  }
+
+  getFlourQuantity(flourQuantity) {
+    // const flour = document.getElementById("flour").value;
+    this.setState(() => {
+      return {
+        quantity: flourQuantity,
+        twoFlours: flourQuantity / 2,
+        madre: MADRE_BASE * flourQuantity / FLOUR_BASE,
+        water: WATER_BASE * flourQuantity / FLOUR_BASE,
+        salt: SALT_BASE * flourQuantity / FLOUR_BASE
+      }
+    });
   }
 
   showInfo() {
@@ -44,10 +63,9 @@ class App extends React.Component {
     }, 2000);
   }
 
-  showCalc() {
+  getResult() {
     const appContainer = document.querySelector(".app-container");
     appContainer.style.transform = "translateY(-122px)";
-    this.closeInfo();
     this.setState({
       loader: true
     });
@@ -97,6 +115,8 @@ class App extends React.Component {
               </div>
               <Info />
             </main>
+
+            {/* can I merge those two condition in one with && ? */}
             {this.state.loader ? <Loader/> : null}
             {this.state.getIngredients ?
             <Ingredients 
