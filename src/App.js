@@ -7,6 +7,7 @@ import {
   WATER_BASE,
   SALT_BASE
 } from './common/constants.js';
+import { closeInfo } from './common/common.js';
 import Loader from './components/Loader/Loader.js';
 import Ingredients from './components/Ingredients/Ingredients';
 import TopBar from './components/TopBar/TopBar.js';
@@ -44,7 +45,6 @@ class App extends React.Component {
   }
 
   getFlourQuantity(flourQuantity) {
-    // const flour = document.getElementById("flour").value;
     this.setState(() => {
       return {
         quantity: flourQuantity,
@@ -64,12 +64,15 @@ class App extends React.Component {
   }
 
   getResult() {
+    closeInfo();
     const appContainer = document.querySelector(".app-container");
     appContainer.style.transform = "translateY(-122px)";
+    const flourValue = document.getElementById("flour").value;
     this.setState({
       loader: true
     });
     setTimeout(() => {
+      this.getFlourQuantity(flourValue);
       this.setState({
         loader: false,
         getIngredients: true
@@ -78,7 +81,9 @@ class App extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({quantity: event.target.value});
+    this.setState({
+      quantity: event.target.value,
+    });
     this.actions();
   }
 
