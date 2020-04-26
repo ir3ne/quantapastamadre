@@ -1,3 +1,4 @@
+@import '~antd/dist/antd.css';
 @import './Loader';
 @import './Ingredients';
 
@@ -154,8 +155,8 @@ button {
 .info {
   position: relative;
   border-radius: 6px;
-  background-color: #2F2F2F;
-  color: white;
+  background-color: #f0f0f0;
+  color: #303030;
   margin: 20px 0;
   padding: 20px;
   transform: translateY(500px);
@@ -183,4 +184,22 @@ button {
 
 .header {
   margin-top: 70px;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: white;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 400px;
+  z-index: 2;
+  padding: 20px;
+  border-radius: 6px;
+
+  &.showPopup {
+    display: block;
+  }
 }

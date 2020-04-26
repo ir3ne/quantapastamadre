@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
-import './scss/all.scss'
+import './scss/all.scss';
 import {
   FLOUR_BASE,
   MADRE_BASE,
   WATER_BASE,
   SALT_BASE
 } from './common/constants.js';
+import { Modal } from 'antd';
 import { closeInfo } from './common/common.js';
 import Loader from './components/Loader/Loader.js';
 import Ingredients from './components/Ingredients/Ingredients';
@@ -25,11 +26,42 @@ class App extends React.Component {
       water: 0,
       salt: 0,
       loader: false,
-      getIngredients: false
+      getIngredients: false,
+      popup: false,
+      visible: false
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.getResult = this.getResult.bind(this);
+    this.togglePopup = this.togglePopup.bind(this);
+  }
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  handleOk = e => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  };
+
+  handleCancel = e => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  };
+  
+  togglePopup() {
+    this.setState(
+      {
+        popup: !this.state.popup
+      }
+    );
   }
 
   actions(num) {
@@ -81,9 +113,7 @@ class App extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({
-      quantity: event.target.value,
-    });
+    this.setState(this.getFlourQuantity(event.target.value));
     this.actions();
   }
 
@@ -95,7 +125,19 @@ class App extends React.Component {
     return (
       <div>
         <div className="app">
-          <TopBar />
+          <TopBar toggle={this.showModal} />
+          <Modal
+            className="recipe-info"
+            title="Come faccio?"
+            visible={this.state.visible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+            footer={null}
+          >
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+          </Modal>
           <div className="app-container">
             <header className="header">
               <Logo />
@@ -129,7 +171,7 @@ class App extends React.Component {
               twoFlours={this.state.twoFlours} 
               madre={this.state.madre} 
               water={this.state.water} 
-              salt={this.state.salt} 
+              salt={this.state.salt}
             /> 
             : null
              }

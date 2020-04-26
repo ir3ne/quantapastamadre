@@ -6,3 +6,4 @@
 - spostare funzione get ingredients dentro Ingredients
 - aggiungi popup
 - add favicon in assets
+- export modal as a standalone component
