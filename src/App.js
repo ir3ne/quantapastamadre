@@ -7,6 +7,8 @@ import {
   SALT_BASE
 } from './common/constants.js';
 import { closeInfo } from './common/common.js';
+import BgShape from './components/BgShape/BgShape';
+import UserAction from './components/UserAction/UserAction';
 import Loader from './components/Loader/Loader.js';
 import Ingredients from './components/Ingredients/Ingredients';
 import AppTitle from './components/AppTitle/AppTitle.js';
@@ -24,13 +26,11 @@ class App extends React.Component {
       salt: 0,
       loader: false,
       getIngredients: false,
-      popup: false,
       visible: false
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.getResult = this.getResult.bind(this);
-    this.togglePopup = this.togglePopup.bind(this);
   }
 
   showModal = () => {
@@ -39,27 +39,19 @@ class App extends React.Component {
     });
   };
 
-  handleOk = e => {
-    console.log(e);
-    this.setState({
-      visible: false,
-    });
-  };
+  // handleOk = e => {
+  //   console.log(e);
+  //   this.setState({
+  //     visible: false,
+  //   });
+  // };
 
-  handleCancel = e => {
-    console.log(e);
-    this.setState({
-      visible: false,
-    });
-  };
-  
-  togglePopup() {
-    this.setState(
-      {
-        popup: !this.state.popup
-      }
-    );
-  }
+  // handleCancel = e => {
+  //   console.log(e);
+  //   this.setState({
+  //     visible: false,
+  //   });
+  // };
 
   actions(num) {
     if (num > 0) {
@@ -121,31 +113,19 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <BgShape />
         <div className="app">
           <div className="app-container">
-            <header className="header">
+            <header>
               <Logo />
               <AppTitle />
             </header>
             <main>
-              <p className="instruction">Inserisci i grammi di farina</p>
-              <div>
-                <div className="flex-v-center">
-                  <div className="quantity-container">
-                    <input 
-                    type="number"
-                    id="flour"
-                    onChange={this.handleChange}
-                    />
-                    <div className="quantity">g</div>
-                  </div>
-                </div>
-              </div>
-              <div className="action">
-              {this.actions(this.state.quantity)}
-              </div>
-              <Info />
+              <UserAction 
+                value={this.handleChange}
+              />
             </main>
+            <Info />
             {/* can I merge those two condition in one with && ? */}
             {this.state.loader ? <Loader/> : null}
             {this.state.getIngredients ?

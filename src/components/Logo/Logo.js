@@ -1,10 +1,11 @@
 import React from 'react';
-import pastaMadre from '../../assets/images/quantapastamadre-logo.svg';
+import classNames from './Logo.module.scss'; 
+import pastaMadreLogo from '../../assets/images/quantapastamadre-logo.svg';
 
 const Logo = () => {
   return (
-    <div className="mother-container">
-      <img className="mother" src={pastaMadre} alt="pasta madre logo"/>
+    <div className={classNames.logo}>
+      <img className={classNames.logo__image} src={pastaMadreLogo} alt="pasta madre logo"/>
     </div>
   );
 }
