@@ -1,5 +1,5 @@
 import React from 'react';
-import pastaMadre from '../../assets/pasta-madre-logo.svg';
+import pastaMadre from '../../assets/images/quantapastamadre-logo.svg';
 
 const Loader = () => {
   return (

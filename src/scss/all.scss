@@ -2,8 +2,27 @@
 @import './Loader';
 @import './Ingredients';
 
+@font-face {
+font-family: 'Google Sans Regular';
+font-style: normal;
+font-weight: normal;
+src: local('Product Sans Regular'), url('../assets/fonts/ProductSans-Regular.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Google Sans Bold';
+font-style: normal;
+font-weight: normal;
+src: local('Product Sans Bold'), url('../assets/fonts/ProductSans-Bold.woff') format('woff');
+}
+  
+
 * {
   box-sizing: border-box;
+}
+
+body {
+  font-family: 'Google Sans Regular', sans-serif;
 }
 
 .app {
@@ -53,28 +72,6 @@
   width: 100%;
   max-width: 80px;
   margin: 20px 0 6px 0;
-}
-
-h1 {
-  font-size: 18px;
-  text-align: center;
-  margin-top: 0;
-
-  .title-container {
-    display: inline-block;
-    transform: rotate(-1deg);
-    position: relative;
-    z-index: 0;
-    color: #fff;
-    background-color: #282828;
-    padding: 2px;
-
-    .title {
-      position: relative;
-      display: inline-block;
-      transform: rotate(1deg);
-    }
-  }
 }
 
 main {

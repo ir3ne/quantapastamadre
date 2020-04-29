@@ -17,3 +17,18 @@ const TopBar = (props) => {
 }
 
 export default TopBar;
+
+// this was in app.js
+// import { Modal } from 'antd';
+
+{/* <TopBar toggle={this.showModal} />
+<Modal
+  className="recipe-info"
+  title="Come faccio?"
+  visible={this.state.visible}
+  onOk={this.handleOk}
+  onCancel={this.handleCancel}
+  footer={null}
+>
+  <p>Some contents...</p>
+</Modal> */}

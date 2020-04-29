@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import './scss/all.scss';
 import {
   FLOUR_BASE,
@@ -7,11 +6,9 @@ import {
   WATER_BASE,
   SALT_BASE
 } from './common/constants.js';
-import { Modal } from 'antd';
 import { closeInfo } from './common/common.js';
 import Loader from './components/Loader/Loader.js';
 import Ingredients from './components/Ingredients/Ingredients';
-import TopBar from './components/TopBar/TopBar.js';
 import AppTitle from './components/AppTitle/AppTitle.js';
 import Info from './components/Info/Info.js';
 import Logo from './components/Logo/Logo.js';
@@ -125,26 +122,13 @@ class App extends React.Component {
     return (
       <div>
         <div className="app">
-          <TopBar toggle={this.showModal} />
-          <Modal
-            className="recipe-info"
-            title="Come faccio?"
-            visible={this.state.visible}
-            onOk={this.handleOk}
-            onCancel={this.handleCancel}
-            footer={null}
-          >
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-            <p>Some contents...</p>
-          </Modal>
           <div className="app-container">
             <header className="header">
               <Logo />
               <AppTitle />
             </header>
             <main>
-              <p className="instruction">Inserisci i grammi di farina <span role="img" aria-label="down pointing">👇</span></p>
+              <p className="instruction">Inserisci i grammi di farina</p>
               <div>
                 <div className="flex-v-center">
                   <div className="quantity-container">
@@ -162,7 +146,6 @@ class App extends React.Component {
               </div>
               <Info />
             </main>
-
             {/* can I merge those two condition in one with && ? */}
             {this.state.loader ? <Loader/> : null}
             {this.state.getIngredients ?

@@ -1,0 +1,21 @@
+.app-title {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 0;
+
+  &__bg {
+    display: inline-block;
+    transform: rotate(-1deg);
+    position: relative;
+    z-index: 0;
+    color: #fff;
+    background-color: #282828;
+    padding: 2px;
+
+    &-text {
+      position: relative;
+      display: inline-block;
+      transform: rotate(1deg);
+    }
+  }
+}
