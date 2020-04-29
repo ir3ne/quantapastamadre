@@ -1,11 +1,13 @@
 import React from 'react';
-import './AppTitle.module.scss';
+import classNames from './AppTitle.module.scss';
+
+console.log(classNames);
 
 const AppTitle = () => {
   return (
-    <h1 className="app-title">
-      <span className="app-title__bg">
-        <span className="app-title__bg-text">quantapastamadre?</span>
+    <h1 className={classNames.appTitle}>
+      <span className={classNames.appTitle__bg}>
+        <span className={classNames['appTitle__bg-text']}>quantapastamadre?</span>
       </span>
     </h1>
   );
