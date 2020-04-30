@@ -1,4 +1,5 @@
 @import '~antd/dist/antd.css';
+@import './Loader';
 @import './Ingredients';
 
 @font-face {
@@ -25,7 +26,7 @@ body {
 
 .app {
   position: relative;
-  max-width: 620px;
+  max-width: 500px;
   margin: 0 auto;
   font-size: 20px;
   line-height: 22px;
@@ -39,11 +40,46 @@ body {
   transition: 0.6s;
 }
 
+main {
+  margin: 0 15px;
+}
+
+.instruction {
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+
+.quantity-container {
+  display: flex;
+  border: 2px solid #febd2d;
+  border-radius: 6px;
+  font-size: 28px;
+  padding: 5px 6px;
+  width: 100%;
+}
+
 input {
   border: 0;
   width: 100%;
   text-align: right;
   font-size: 38px;
+}
+
+.quantity {
+  font-size: 48px;
+  line-height: 48px;
+  margin-left: auto;
+  font-size: 48px;
+  line-height: 48px;
+  margin-left: auto;
+  width: 26px;
+  display: inline-block;
+  color: lightgrey;
+}
+
+.flex-v-center {
+  display: flex;
+  align-items: center;
 }
 
 .action {
@@ -62,11 +98,15 @@ button {
   border-radius: 6px;
   padding: 8px;
 
-  outline: none;
-
   &:disabled {
     opacity: 0.6;
-    cursor: not-allowed;
+  }
+
+  &.calc {
+    background-color: #febd2d;
+    color: white;
+    width: 100%;
+    padding: 10px 2px;
   }
 
   &.reset {
@@ -124,16 +164,5 @@ button {
 
   &.showPopup {
     display: block;
-  }
-}
-
-//Loader
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
   }
 }

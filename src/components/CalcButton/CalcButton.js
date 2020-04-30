@@ -1,8 +1,14 @@
 import React from 'react';
+import classNames from './CalcButton.module.scss';
 
-const CalcButton = ({ quantity, getResult }) => {
+const CalcButton = (props) => {
+  const { loadIngredients, flourQty } = props;
   return (
-    <button className="calc" onClick={getResult} disabled={quantity > 0 ? false : true}>
+    <button
+      className={classNames.calcButton}
+      onClick={loadIngredients}
+      disabled={flourQty > 0 ? false : true}
+    >
       Calcola
     </button>
   );
