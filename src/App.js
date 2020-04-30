@@ -1,11 +1,6 @@
 import React from 'react';
 import './scss/all.scss';
-import {
-  FLOUR_BASE,
-  MADRE_BASE,
-  WATER_BASE,
-  SALT_BASE
-} from './common/constants.js';
+import { FLOUR_BASE, MADRE_BASE, WATER_BASE, SALT_BASE } from './common/constants.js';
 import { closeInfo } from './common/common.js';
 import BgShape from './components/BgShape/BgShape';
 import UserAction from './components/UserAction/UserAction';
@@ -14,6 +9,7 @@ import Ingredients from './components/Ingredients/Ingredients';
 import AppTitle from './components/AppTitle/AppTitle.js';
 import Info from './components/Info/Info.js';
 import Logo from './components/Logo/Logo.js';
+import CalcButton from './components/CalcButton/CalcButton';
 
 class App extends React.Component {
   constructor(props) {
@@ -26,11 +22,12 @@ class App extends React.Component {
       salt: 0,
       loader: false,
       getIngredients: false,
-      visible: false
-    }
+      visible: false,
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.getResult = this.getResult.bind(this);
+    this.actions = this.actions.bind(this);
   }
 
   showModal = () => {
@@ -54,49 +51,42 @@ class App extends React.Component {
   // };
 
   actions(num) {
-    if (num > 0) {
-      return (
-       <button className="calc" onClick={this.getResult}>Calcola</button>
-      );
-    } else {
-      return (
-       <button className="calc" disabled>Calcola</button>
-      );
-    }
+    this.setState(this.getFlourQuantity(num));
   }
 
   getFlourQuantity(flourQuantity) {
+    // Bread app Engine
     this.setState(() => {
       return {
         quantity: flourQuantity,
         twoFlours: flourQuantity / 2,
-        madre: MADRE_BASE * flourQuantity / FLOUR_BASE,
-        water: WATER_BASE * flourQuantity / FLOUR_BASE,
-        salt: SALT_BASE * flourQuantity / FLOUR_BASE
-      }
+        madre: (MADRE_BASE * flourQuantity) / FLOUR_BASE,
+        water: (WATER_BASE * flourQuantity) / FLOUR_BASE,
+        salt: (SALT_BASE * flourQuantity) / FLOUR_BASE,
+      };
     });
   }
 
   showInfo() {
     const info = document.getElementById('info');
     setTimeout(() => {
-      info.style.transform = "translateY(0)";
+      info.style.transform = 'translateY(0)';
     }, 2000);
   }
 
   getResult() {
     closeInfo();
-    const appContainer = document.querySelector(".app-container");
-    appContainer.style.transform = "translateY(-122px)";
-    const flourValue = document.getElementById("flour").value;
+    const appContainer = document.querySelector('.app-container');
+    appContainer.style.transform = 'translateY(-122px)';
+    const flourValue = document.getElementById('flour').value;
     this.setState({
-      loader: true
+      loader: true,
     });
     setTimeout(() => {
       this.getFlourQuantity(flourValue);
       this.setState({
         loader: false,
-        getIngredients: true
+        getIngredients: true,
       });
     }, 2000);
   }
@@ -121,23 +111,21 @@ class App extends React.Component {
               <AppTitle />
             </header>
             <main>
-              <UserAction 
-                value={this.handleChange}
-              />
+              <UserAction actions={this.actions} />
+              <CalcButton getResult={this.getResult} quantity={this.state.quantity} />
             </main>
             <Info />
             {/* can I merge those two condition in one with && ? */}
-            {this.state.loader ? <Loader/> : null}
-            {this.state.getIngredients ?
-            <Ingredients 
-              quantity={this.state.quantity} 
-              twoFlours={this.state.twoFlours} 
-              madre={this.state.madre} 
-              water={this.state.water} 
-              salt={this.state.salt}
-            /> 
-            : null
-             }
+            {this.state.loader ? <Loader /> : null}
+            {this.state.getIngredients ? (
+              <Ingredients
+                quantity={this.state.quantity}
+                twoFlours={this.state.twoFlours}
+                madre={this.state.madre}
+                water={this.state.water}
+                salt={this.state.salt}
+              />
+            ) : null}
           </div>
         </div>
       </div>
