@@ -1,0 +1,31 @@
+.flourInputContainer {
+  position: relative;
+
+  width: 100%;
+}
+
+.flourInput {
+  border: 2px solid #febd2d;
+  border-radius: 6px;
+  font-size: 28px;
+  height: 50px;
+  padding: 5px 25px 5px 6px;
+  margin-bottom: 12px;
+  width: 100%;
+
+  outline: none;
+}
+
+.quantityMetric {
+  position: absolute;
+  right: 0;
+  top: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+
+  opacity: 0.4;
+}

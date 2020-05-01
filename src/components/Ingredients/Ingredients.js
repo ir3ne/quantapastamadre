@@ -1,19 +1,41 @@
 import React from 'react';
+import PhaseTag from '../PhaseTag/PhaseTag';
+import PhaseTitle from '../PhaseTitle/PhaseTitle';
+import IngredientTitle from '../IngredientTitle/IngredientTitle';
 
-class Ingredients extends React.Component {
-  render() {
-   return (
-    <div className="madre-ingredients">
-      <h2 className="madre-ingredients--title">Prima fase: Autolisi</h2>
-      <p>Farina: <span className="madre-ingredients__highlight"><span>{this.props.quantity} g</span></span> oppure {this.props.twoFlours} g di un tipo di farina + {this.props.twoFlours} g di un tipo di farina</p>
-      <p>Pasta madre: <span className="madre-ingredients__highlight"><span>{this.props.madre} g</span></span></p>
-      <p>Acqua: <span className="madre-ingredients__highlight"><span>{this.props.water} g</span></span></p>
-      <h2 className="madre-ingredients--title">Seconda fase: Impasto</h2>
-      <p>Sale: <span className="madre-ingredients__highlight"><span>{this.props.salt} g</span></span></p>
-      <p>Acqua: <span className="madre-ingredients__highlight"><span>acqua rimanente</span></span></p>
-    </div>
-   );
-  };
-}
+import classNames from './Ingredients.module.scss';
+
+const Ingredients = (props) => {
+  const { flour, twoFlours, salt, water } = props.ingredients;
+
+  console.log(props, flour);
+
+  return (
+    <>
+      <div className={classNames.madreIngredients}>
+        <PhaseTag>First Step</PhaseTag>
+        <PhaseTitle>Autolisi</PhaseTitle>
+        <IngredientTitle>Flour</IngredientTitle>
+        <p>{flour} g oppure</p>
+        <IngredientTitle>In alternativa</IngredientTitle>
+        <p>
+          {twoFlours} g di un tipo di farina + {twoFlours} g di un altro tipo di farina
+        </p>
+        <IngredientTitle>Salt</IngredientTitle>
+        <p>{salt} g</p>
+        <IngredientTitle>Water</IngredientTitle>
+        <p>{water} g</p>
+      </div>
+      <div className={classNames.madreIngredients}>
+        <PhaseTag>Second Step</PhaseTag>
+        <PhaseTitle>Impasto</PhaseTitle>
+        <IngredientTitle>Salt</IngredientTitle>
+        <p>{salt} g</p>
+        <IngredientTitle>Water</IngredientTitle>
+        <p>remaining water</p>
+      </div>
+    </>
+  );
+};
 
 export default Ingredients;

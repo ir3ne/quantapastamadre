@@ -1,36 +1,38 @@
 import React from 'react';
 import './scss/all.scss';
-import {
-  FLOUR_BASE,
-  MADRE_BASE,
-  WATER_BASE,
-  SALT_BASE
-} from './common/constants.js';
+import { FLOUR_BASE, MADRE_BASE, WATER_BASE, SALT_BASE } from './common/constants.js';
+
+import Header from './containers/Header/Header';
+import Main from './containers/Main/Main';
+
 import { closeInfo } from './common/common.js';
 import BgShape from './components/BgShape/BgShape';
-import UserAction from './components/UserAction/UserAction';
+
 import Loader from './components/Loader/Loader.js';
 import Ingredients from './components/Ingredients/Ingredients';
-import AppTitle from './components/AppTitle/AppTitle.js';
+
 import Info from './components/Info/Info.js';
-import Logo from './components/Logo/Logo.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      quantity: 0,
-      twoFlours: 0,
-      madre: 0,
-      water: 0,
-      salt: 0,
-      loader: false,
-      getIngredients: false,
-      visible: false
-    }
+      showLoader: false,
+      showIngredients: false,
+      visible: false,
+
+      ingredients: {
+        flour: 0,
+        twoFlours: 0,
+        madre: 0,
+        water: 0,
+        salt: 0,
+      },
+    };
 
     this.handleChange = this.handleChange.bind(this);
-    this.getResult = this.getResult.bind(this);
+    this.loadIngredients = this.loadIngredients.bind(this);
+    this.setIngredients = this.setIngredients.bind(this);
   }
 
   showModal = () => {
@@ -39,64 +41,42 @@ class App extends React.Component {
     });
   };
 
-  // handleOk = e => {
-  //   console.log(e);
-  //   this.setState({
-  //     visible: false,
-  //   });
-  // };
-
-  // handleCancel = e => {
-  //   console.log(e);
-  //   this.setState({
-  //     visible: false,
-  //   });
-  // };
-
-  actions(num) {
-    if (num > 0) {
-      return (
-       <button className="calc" onClick={this.getResult}>Calcola</button>
-      );
-    } else {
-      return (
-       <button className="calc" disabled>Calcola</button>
-      );
-    }
+  calcIngredientAmounts(flourQuantity) {
+    // Bread app Engine
+    return {
+      flour: flourQuantity,
+      twoFlours: flourQuantity / 2,
+      madre: (MADRE_BASE * flourQuantity) / FLOUR_BASE,
+      water: (WATER_BASE * flourQuantity) / FLOUR_BASE,
+      salt: (SALT_BASE * flourQuantity) / FLOUR_BASE,
+    };
   }
 
-  getFlourQuantity(flourQuantity) {
-    this.setState(() => {
-      return {
-        quantity: flourQuantity,
-        twoFlours: flourQuantity / 2,
-        madre: MADRE_BASE * flourQuantity / FLOUR_BASE,
-        water: WATER_BASE * flourQuantity / FLOUR_BASE,
-        salt: SALT_BASE * flourQuantity / FLOUR_BASE
-      }
+  setIngredients(flourQuantity) {
+    // this function returns the ingredients quantity for the amount of flour
+    this.setState({
+      ingredients: this.calcIngredientAmounts(flourQuantity),
     });
   }
 
   showInfo() {
     const info = document.getElementById('info');
     setTimeout(() => {
-      info.style.transform = "translateY(0)";
+      info.style.transform = 'translateY(0)';
     }, 2000);
   }
 
-  getResult() {
+  loadIngredients() {
     closeInfo();
-    const appContainer = document.querySelector(".app-container");
-    appContainer.style.transform = "translateY(-122px)";
-    const flourValue = document.getElementById("flour").value;
+
     this.setState({
-      loader: true
+      loader: true,
     });
+
     setTimeout(() => {
-      this.getFlourQuantity(flourValue);
       this.setState({
         loader: false,
-        getIngredients: true
+        getIngredients: true,
       });
     }, 2000);
   }
@@ -116,28 +96,18 @@ class App extends React.Component {
         <BgShape />
         <div className="app">
           <div className="app-container">
-            <header>
-              <Logo />
-              <AppTitle />
-            </header>
-            <main>
-              <UserAction 
-                value={this.handleChange}
-              />
-            </main>
+            <Header />
+            <Main
+              flourQty={this.state.ingredients.flour}
+              onFlourQtyChange={this.setIngredients}
+              loadIngredients={this.loadIngredients}
+            />
             <Info />
-            {/* can I merge those two condition in one with && ? */}
-            {this.state.loader ? <Loader/> : null}
-            {this.state.getIngredients ?
-            <Ingredients 
-              quantity={this.state.quantity} 
-              twoFlours={this.state.twoFlours} 
-              madre={this.state.madre} 
-              water={this.state.water} 
-              salt={this.state.salt}
-            /> 
-            : null
-             }
+            <Loader showLoader={this.state.showLoader} />
+            <Ingredients
+              ingredients={this.state.ingredients}
+              showIngredients={this.state.showIngredients}
+            />
           </div>
         </div>
       </div>
@@ -146,3 +116,21 @@ class App extends React.Component {
 }
 
 export default App;
+
+// handleOk = e => {
+//   console.log(e);
+//   this.setState({
+//     visible: false,
+//   });
+// };
+
+// handleCancel = e => {
+//   console.log(e);
+//   this.setState({
+//     visible: false,
+//   });
+// };
+
+// const appContainer = document.querySelector('.app-container');
+// appContainer.style.transform = 'translateY(-122px)';
+// const flourValue = document.getElementById('flour').value;
