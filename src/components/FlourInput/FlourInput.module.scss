@@ -14,10 +14,12 @@
 
 .flourInputClearBtn {
   position: absolute;
+  opacity: 0;
   right: 54px;
   width: 20px;
   top: 50%;
   transform: translateY(-50%);
+  transition: opacity .3s;
 
   img {
     width: 100%;
