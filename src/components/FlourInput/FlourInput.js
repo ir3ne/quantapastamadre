@@ -9,7 +9,7 @@ const FlourInput = (props) => {
       <input
         type="number"
         id="flour"
-        className={classNames.floutInput}
+        className={classNames.flourInput}
         onChange={(e) => {
           onFlourQtyChange(e.target.value);
         }}

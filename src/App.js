@@ -22,11 +22,11 @@ class App extends React.Component {
       visible: false,
 
       ingredients: {
-        farina: 'x',
-        twoFlours: 'x',
-        madre: 'x',
-        aqua: 'x',
-        sale: 'x',
+        flour: 0,
+        twoFlours: 0,
+        madre: 0,
+        water: 0,
+        salt: 0,
       },
     };
 
@@ -44,11 +44,11 @@ class App extends React.Component {
   calcIngredientAmounts(flourQuantity) {
     // Bread app Engine
     return {
-      farina: flourQuantity,
+      flour: flourQuantity,
       twoFlours: flourQuantity / 2,
       madre: (MADRE_BASE * flourQuantity) / FLOUR_BASE,
-      aqua: (WATER_BASE * flourQuantity) / FLOUR_BASE,
-      sale: (SALT_BASE * flourQuantity) / FLOUR_BASE,
+      water: (WATER_BASE * flourQuantity) / FLOUR_BASE,
+      salt: (SALT_BASE * flourQuantity) / FLOUR_BASE,
     };
   }
 

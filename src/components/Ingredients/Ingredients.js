@@ -6,33 +6,33 @@ import IngredientTitle from '../IngredientTitle/IngredientTitle';
 import classNames from './Ingredients.module.scss';
 
 const Ingredients = (props) => {
-  const { flour, twoFlours, sale, aqua } = props.ingredients;
+  const { flour, twoFlours, salt, water } = props.ingredients;
 
   console.log(props, flour);
 
   return (
     <>
       <div className={classNames.madreIngredients}>
-        <PhaseTag>Prima fase</PhaseTag>
+        <PhaseTag>First Step</PhaseTag>
         <PhaseTitle>Autolisi</PhaseTitle>
-        <IngredientTitle>Farina</IngredientTitle>
+        <IngredientTitle>Flour</IngredientTitle>
         <p>{flour} g oppure</p>
         <IngredientTitle>In alternativa</IngredientTitle>
         <p>
           {twoFlours} g di un tipo di farina + {twoFlours} g di un altro tipo di farina
         </p>
-        <IngredientTitle>Sale</IngredientTitle>
-        <p>{sale} g</p>
-        <IngredientTitle>Aqua</IngredientTitle>
-        <p>{aqua} g</p>
+        <IngredientTitle>Salt</IngredientTitle>
+        <p>{salt} g</p>
+        <IngredientTitle>Water</IngredientTitle>
+        <p>{water} g</p>
       </div>
       <div className={classNames.madreIngredients}>
-        <PhaseTag>Seconda fase</PhaseTag>
+        <PhaseTag>Second Step</PhaseTag>
         <PhaseTitle>Impasto</PhaseTitle>
-        <IngredientTitle>Sale</IngredientTitle>
-        <p>{sale} g</p>
-        <IngredientTitle>Aqua</IngredientTitle>
-        <p>aqua rimanente</p>
+        <IngredientTitle>Salt</IngredientTitle>
+        <p>{salt} g</p>
+        <IngredientTitle>Water</IngredientTitle>
+        <p>remaining water</p>
       </div>
     </>
   );
