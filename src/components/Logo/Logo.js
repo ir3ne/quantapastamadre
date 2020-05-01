@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from './Logo.module.scss'; 
-import pastaMadreLogo from '../../assets/images/quantapastamadre-logo.svg';
+import pastaMadreLogo from '../../assets/images/quantapastamadre-white-logo.svg';
 
 const Logo = () => {
   return (

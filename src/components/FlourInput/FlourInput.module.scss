@@ -1,16 +1,19 @@
 .flourInputContainer {
   position: relative;
-
+  display: flex;
+  align-items: center;
+  height: 55px;
   width: 100%;
+  margin-bottom: 12px;
 }
 
 .flourInput {
+  text-align: left;
   border: 2px solid #febd2d;
   border-radius: 6px;
   font-size: 28px;
-  height: 50px;
-  padding: 5px 25px 5px 6px;
-  margin-bottom: 12px;
+  height: 55px;
+  padding: 5px 50px 5px 18px;
   width: 100%;
 
   outline: none;
@@ -19,13 +22,25 @@
 .quantityMetric {
   position: absolute;
   right: 0;
-  top: 8px;
-
+  top: 0;
+  bottom: 0;
+  font-size: 24px;
+  color: #cdcdcd;
+  line-height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 30px;
-  width: 30px;
+  width: 44px;
+  padding-left: 2px;
 
-  opacity: 0.4;
+  &:before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    background: #cdcdcd;
+    top: 50%;
+    left: 0;
+    height: 60%;
+    transform: translateY(-50%);
+  }
 }
