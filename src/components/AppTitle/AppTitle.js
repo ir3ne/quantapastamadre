@@ -1,8 +1,6 @@
 import React from 'react';
 import classNames from './AppTitle.module.scss';
 
-console.log(classNames);
-
 const AppTitle = () => {
   return (
     <h1 className={classNames.appTitle}>

@@ -1,0 +1,21 @@
+.bgShape {
+  &__curved0 {
+    position: absolute;
+    width: 100%;
+    background: #F7E4BD;;
+    height: 50vh;
+    top: -27vh;
+    border-bottom-left-radius: 50% 100%;
+    border-bottom-right-radius: 50% 100%;
+  }
+
+  &__curved1 {
+    position: absolute;
+    width: 100%;
+    background: #FFEEC9;
+    height: 46vh;
+    top: -26vh;
+    border-bottom-left-radius: 50% 100%;
+    border-bottom-right-radius: 50% 100%;
+  }
+}
