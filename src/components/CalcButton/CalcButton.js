@@ -9,7 +9,7 @@ const CalcButton = (props) => {
       onClick={loadIngredients}
       disabled={flourQty > 0 ? false : true}
     >
-      Calculate
+      Calcola
     </button>
   );
 };
