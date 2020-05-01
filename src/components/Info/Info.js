@@ -1,5 +1,5 @@
 import React from 'react';
-import close from '../../assets/close.svg';
+import close from '../../assets/images/close.svg';
 import { closeInfo } from '../../common/common.js';
 const Info = () => {
   return (
