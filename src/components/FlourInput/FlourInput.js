@@ -3,10 +3,7 @@ import classNames from './FlourInput.module.scss';
 import clear from '../../assets/images/clear.svg';
 
 const FlourInput = (props) => {
-  const { onFlourQtyChange , flourQty } = props;
-  const btnVisibility = {
-    opacity: 1
-  }
+  const { onFlourQtyChange , flourQty, clearInput } = props;
 
   return (
     <div className={classNames.flourInputContainer}>
@@ -19,15 +16,16 @@ const FlourInput = (props) => {
             onFlourQtyChange(e.target.value);
           }}
         />
-       <span
+       <button
           id="clearInput"
-          class={classNames.flourInputClearBtn}
-          style={flourQty > 0 ? btnVisibility : null }
+          className={classNames.flourInputClearBtn}
+          onClick={clearInput}
+          disabled={flourQty > 0 ? false : true}
           >
           <img src={clear} alt="" />
-        </span>
+        </button>
       </div>
-      <div class={classNames.quantityMetric}>
+      <div className={classNames.quantityMetric}>
         <span>g</span>
       </div>
     </div>

@@ -66,6 +66,13 @@ class App extends React.Component {
     }, 2000);
   }
 
+  clearInput() {
+    const flourInput = document.getElementById('flour');
+    const clearInputBtn = document.getElementById('clearInput');
+    clearInputBtn.disabled = true;
+    flourInput.value = undefined;
+  }
+
   loadIngredients() {
     closeInfo();
 
@@ -100,6 +107,7 @@ class App extends React.Component {
             <Main
               flourQty={this.state.ingredients.flour}
               onFlourQtyChange={this.setIngredients}
+              clearInput={this.clearInput}
               loadIngredients={this.loadIngredients}
             />
             <Info />
