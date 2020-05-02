@@ -12,6 +12,7 @@ import Loader from './components/Loader/Loader.js';
 import Ingredients from './components/Ingredients/Ingredients';
 
 import Info from './components/Info/Info.js';
+import Steps from './components/Steps/Steps';
 
 class App extends React.Component {
   constructor(props) {
@@ -108,6 +109,7 @@ class App extends React.Component {
               ingredients={this.state.ingredients}
               showIngredients={this.state.showIngredients}
             />
+            <Steps />
           </div>
         </div>
       </div>
