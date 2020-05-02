@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from './Info.module.scss';
 // import close from '../../assets/close.svg';
 // import { closeInfo } from '../../common/common.js';
+
 const Info = () => {
   return (
     <div id="info" class={classNames.info}>

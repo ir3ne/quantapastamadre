@@ -34,6 +34,7 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.loadIngredients = this.loadIngredients.bind(this);
     this.setIngredients = this.setIngredients.bind(this);
+    this.clearInput = this.clearInput.bind(this);
   }
 
   showModal = () => {
@@ -65,6 +66,16 @@ class App extends React.Component {
     setTimeout(() => {
       info.style.transform = 'translateY(0)';
     }, 2000);
+  }
+
+  clearInput() {
+    const flourInput = document.getElementById("flour");
+    flourInput.value = undefined;
+    this.setState({
+      ingredients: {
+        flour: undefined
+      }
+    });
   }
 
   loadIngredients() {
@@ -101,6 +112,7 @@ class App extends React.Component {
             <Main
               flourQty={this.state.ingredients.flour}
               onFlourQtyChange={this.setIngredients}
+              clearInput={this.clearInput}
               loadIngredients={this.loadIngredients}
             />
             <Info />
