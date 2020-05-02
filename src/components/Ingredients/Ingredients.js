@@ -7,10 +7,11 @@ import Separator from '../Separator/Separator';
 import classNames from './Ingredients.module.scss';
 
 const Ingredients = (props) => {
+  const { showIngredients } = props;
   const { flour, twoFlours, salt, water } = props.ingredients;
   
-  return (
-    <>
+  return showIngredients ? (
+    <>   
       <div className={classNames.madreIngredients}>
         <PhaseTag>Prima fase</PhaseTag>
         <PhaseTitle>Autolisi</PhaseTitle>
@@ -37,7 +38,7 @@ const Ingredients = (props) => {
         <p>remaining water</p>
       </div>
     </>
-  );
+  ) : null;
 };
 
 export default Ingredients;

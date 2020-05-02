@@ -82,13 +82,13 @@ class App extends React.Component {
     closeInfo();
 
     this.setState({
-      loader: true,
+      showLoader: true,
     });
 
     setTimeout(() => {
       this.setState({
-        loader: false,
-        getIngredients: true,
+        showLoader: false,
+        showIngredients: true,
       });
     }, 2000);
   }
