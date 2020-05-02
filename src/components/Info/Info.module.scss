@@ -1,0 +1,25 @@
+.info {
+  position: relative;
+  border-radius: 6px;
+  background-color: #D7F3F4;
+  margin: 20px 0;
+  padding: 25px;
+  border-radius: 8px;
+  transform: translateY(500px);
+  transition: transform 1.5s ease;
+  font-size: 16px;
+
+  // &__closeBtn {
+  //   position: absolute;
+  //   top: 10px;
+  //   right: 10px;
+  //   color: white;
+  //   width: 18px;
+  //   height: 18px;
+
+  //   img {
+  //     width: 100%;
+  //     height: auto;
+  //   }
+  // }
+}
