@@ -8,9 +8,7 @@ import classNames from './Ingredients.module.scss';
 
 const Ingredients = (props) => {
   const { flour, twoFlours, salt, water } = props.ingredients;
-
-  console.log(props, flour);
-
+  
   return (
     <>
       <div className={classNames.madreIngredients}>

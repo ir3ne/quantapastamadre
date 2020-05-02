@@ -33,6 +33,7 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.loadIngredients = this.loadIngredients.bind(this);
     this.setIngredients = this.setIngredients.bind(this);
+    this.clearInput = this.clearInput.bind(this);
   }
 
   showModal = () => {
@@ -67,10 +68,13 @@ class App extends React.Component {
   }
 
   clearInput() {
-    const flourInput = document.getElementById('flour');
-    const clearInputBtn = document.getElementById('clearInput');
-    clearInputBtn.disabled = true;
+    const flourInput = document.getElementById("flour");
     flourInput.value = undefined;
+    this.setState({
+      ingredients: {
+        flour: undefined
+      }
+    });
   }
 
   loadIngredients() {

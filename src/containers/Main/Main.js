@@ -5,7 +5,7 @@ import CalcButton from '../../components/CalcButton/CalcButton';
 import classNames from './Main.module.scss';
 
 const Main = (props) => {
-  const { onFlourQtyChange, flourQty, clearInput,   loadIngredients } = props;
+  const { onFlourQtyChange, flourQty, clearInput, loadIngredients } = props;
 
   return (
     <main className={classNames.main}>
