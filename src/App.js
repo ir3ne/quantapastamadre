@@ -14,6 +14,8 @@ import Ingredients from './components/Ingredients/Ingredients';
 import Info from './components/Info/Info.js';
 import Steps from './components/Steps/Steps';
 
+import Thanks from './components/Thanks/Thanks';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -122,6 +124,7 @@ class App extends React.Component {
               showIngredients={this.state.showIngredients}
             />
             <Steps />
+            <Thanks />
           </div>
         </div>
       </div>

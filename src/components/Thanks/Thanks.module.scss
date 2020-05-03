@@ -1,0 +1,23 @@
+.thanks {
+  text-align: center;
+  padding: 20px;
+
+  a {
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 92px;
+
+      @media (min-width: 768px) {
+        max-width: 72px;
+      }
+    }
+  }
+}
+
+.thanksText {
+  font-size: 15px;
+  line-height: 17px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
