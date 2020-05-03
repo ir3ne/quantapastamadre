@@ -8,7 +8,7 @@ import classNames from './Ingredients.module.scss';
 
 const Ingredients = (props) => {
   const { showIngredients } = props;
-  const { flour, twoFlours, salt, water } = props.ingredients;
+  const { flour, twoFlours,  waterFirstStep, waterSecondStep, salt } = props.ingredients;
   
   return showIngredients ? (
     <>   
@@ -16,26 +16,23 @@ const Ingredients = (props) => {
         <PhaseTag>Prima fase</PhaseTag>
         <PhaseTitle>Autolisi</PhaseTitle>
         <IngredientTitle>Farina</IngredientTitle>
-        <p>{flour} g</p>
+        <p>{flour} g di Tipo 2)</p>
         <IngredientTitle>In alternativa</IngredientTitle>
         <p>
-          {twoFlours} g di un tipo di farina + {twoFlours} g di un altro tipo di farina
+          {twoFlours} g di Tipo 2 + {twoFlours} g di un altro tipo di farina
         </p>
         <Separator/>
-        <IngredientTitle>Salt</IngredientTitle>
-        <p>{salt} g</p>
-        <Separator/>
-        <IngredientTitle>Water</IngredientTitle>
-        <p>{water} g</p>
+        <IngredientTitle>Acqua</IngredientTitle>
+        <p>{waterFirstStep} g</p>
       </div>
       <div className={classNames.madreIngredients}>
         <PhaseTag>Seconda fase</PhaseTag>
         <PhaseTitle>Impasto</PhaseTitle>
-        <IngredientTitle>Salt</IngredientTitle>
+        <IngredientTitle>Sale</IngredientTitle>
         <p>{salt} g</p>
         <Separator/>
-        <IngredientTitle>Water</IngredientTitle>
-        <p>remaining water</p>
+        <IngredientTitle>Acqua</IngredientTitle>
+        <p>{waterSecondStep} g</p>
       </div>
     </>
   ) : null;
