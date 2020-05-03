@@ -1,0 +1,21 @@
+.credits {
+  text-align: center;
+  padding: 20px;
+}
+
+.creditsText {
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: bold;
+  margin-bottom: 2px;
+
+  a {
+    color: #2F2F2F;
+    margin: 0 4px;
+
+    &:hover,
+    &:active {
+      color: #febd2d;
+    }
+  }
+}

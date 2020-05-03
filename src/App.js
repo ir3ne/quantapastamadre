@@ -15,6 +15,7 @@ import Info from './components/Info/Info.js';
 import Steps from './components/Steps/Steps';
 
 import Thanks from './components/Thanks/Thanks';
+import Credits from './components/Credits/Credits';
 
 class App extends React.Component {
   constructor(props) {
@@ -125,6 +126,7 @@ class App extends React.Component {
             />
             <Steps />
             <Thanks />
+            <Credits />
           </div>
         </div>
       </div>
@@ -133,21 +135,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-// handleOk = e => {
-//   console.log(e);
-//   this.setState({
-//     visible: false,
-//   });
-// };
-
-// handleCancel = e => {
-//   console.log(e);
-//   this.setState({
-//     visible: false,
-//   });
-// };
-
-// const appContainer = document.querySelector('.app-container');
-// appContainer.style.transform = 'translateY(-122px)';
-// const flourValue = document.getElementById('flour').value;
