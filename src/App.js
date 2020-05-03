@@ -1,6 +1,6 @@
 import React from 'react';
 import './scss/all.scss';
-import { FLOUR_BASE, MADRE_BASE, WATER_BASE, SALT_BASE } from './common/constants.js';
+import { FLOUR_BASE, MADRE_BASE, WATER_BASE_FIRST_STEP, WATER_BASE_SECOND_STEP, SALT_BASE } from './common/constants.js';
 
 import Header from './containers/Header/Header';
 import Main from './containers/Main/Main';
@@ -52,8 +52,9 @@ class App extends React.Component {
       flour: flourQuantity,
       twoFlours: flourQuantity / 2,
       madre: (MADRE_BASE * flourQuantity) / FLOUR_BASE,
-      water: (WATER_BASE * flourQuantity) / FLOUR_BASE,
+      waterFirstStep: (WATER_BASE_FIRST_STEP * flourQuantity) / FLOUR_BASE,
       salt: (SALT_BASE * flourQuantity) / FLOUR_BASE,
+      waterSecondStep: (WATER_BASE_SECOND_STEP * flourQuantity) / FLOUR_BASE
     };
   }
 

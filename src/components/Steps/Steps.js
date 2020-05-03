@@ -41,7 +41,9 @@ class Steps extends React.Component {
         <Modal
           className={classNames.stepsModal}
           visible={visible}
-          title="Segui i passaggi per fare IL PANE"
+          style={{ top: 30 }}
+          width="600px"
+          title="Segui i passaggi di Forno Brisa per fare il tuo PANE!"
           onOk={this.handleOk}
           onCancel={this.handleCancel}
           footer={null}
