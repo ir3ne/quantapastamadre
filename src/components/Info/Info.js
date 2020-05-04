@@ -10,7 +10,7 @@ const Info = () => {
         <img src={close} alt="" />
       </span> */}
       Inserisci i grammi di farina che vuoi usare e verranno calcolate 
-      le giuste quantità degli altri ingredienti per fare un pane eccellente
+      le giuste quantità degli altri ingredienti per fare un pane eccellente!
     </div>
   );
 };

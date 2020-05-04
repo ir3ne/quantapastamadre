@@ -5,7 +5,7 @@ import { FLOUR_BASE, MADRE_BASE, WATER_BASE_FIRST_STEP, WATER_BASE_SECOND_STEP, 
 import Header from './containers/Header/Header';
 import Main from './containers/Main/Main';
 
-import { closeInfo } from './common/common.js';
+import { closeInfo, closeIngredients } from './common/common.js';
 import BgShape from './components/BgShape/BgShape';
 
 import Loader from './components/Loader/Loader.js';
@@ -87,6 +87,7 @@ class App extends React.Component {
 
     this.setState({
       showLoader: true,
+      showIngredients: false
     });
 
     setTimeout(() => {
