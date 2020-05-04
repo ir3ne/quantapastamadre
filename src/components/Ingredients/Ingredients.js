@@ -16,7 +16,7 @@ const Ingredients = (props) => {
         <PhaseTag>Prima fase</PhaseTag>
         <PhaseTitle>Autolisi</PhaseTitle>
         <IngredientTitle>Farina</IngredientTitle>
-        <p>{flour} g di Tipo 2)</p>
+        <p>{flour} g di Tipo 2</p>
         <IngredientTitle>In alternativa</IngredientTitle>
         <p>
           {twoFlours} g di Tipo 2 + {twoFlours} g di un altro tipo di farina
