@@ -1,21 +1,57 @@
 .bgShape {
+  overflow-x: hidden;
+  width: 100%;
+  display: block;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+
   &__curved0 {
     position: absolute;
     width: 100%;
-    background: #F7E4BD;;
-    height: 50vh;
-    top: -27vh;
+    background: #F7E4BD;
+    height: 22.5rem;
+    top: -12.5rem;
     border-bottom-left-radius: 50% 100%;
     border-bottom-right-radius: 50% 100%;
+
+    @media (max-width: 768px) {
+      width: 121%;
+      height: 23.5rem;
+      top: -13.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @media (max-width: 560px) {
+      width: 146%;
+      height: 23.5rem;
+      top: -13.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
   &__curved1 {
     position: absolute;
     width: 100%;
     background: #FFEEC9;
-    height: 46vh;
-    top: -26vh;
+    height: 22rem;
+    top: -13rem;
     border-bottom-left-radius: 50% 100%;
     border-bottom-right-radius: 50% 100%;
+
+    @media (max-width: 768px) {
+      width: 118%;
+      height: 23.5rem;
+      top: -14.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @media (max-width: 560px) {
+      width: 148%;
+    }
   }
 }
