@@ -8,7 +8,7 @@ import classNames from './Ingredients.module.scss';
 
 const Ingredients = (props) => {
   const { showIngredients } = props;
-  const { flour, twoFlours,  waterFirstStep, waterSecondStep, salt } = props.ingredients;
+  const { flour, twoFlours, madre, waterFirstStep, waterSecondStep, salt } = props.ingredients;
   
   return showIngredients ? (
     <>   
@@ -21,6 +21,9 @@ const Ingredients = (props) => {
         <p>
           {twoFlours} g di Tipo 2 + {twoFlours} g di un altro tipo di farina
         </p>
+        <Separator/>
+        <IngredientTitle>Pasta Madre</IngredientTitle>
+        <p>{madre} g</p>
         <Separator/>
         <IngredientTitle>Acqua</IngredientTitle>
         <p>{waterFirstStep} g</p>
