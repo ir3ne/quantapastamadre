@@ -6,8 +6,6 @@ Those days are hard and cooking is fun! 🥖 = 🎉
 
 **[Live Preview](https://quantapastamadre.netlify.app/)**
 
-![quantapastamadre demo](./quantapastamadre-gif.gif)
-
 
 ## Available Scripts
 
