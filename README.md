@@ -4,7 +4,7 @@ It's a small calculator for how much sourdough you need to make your own bread a
 
 Those days are hard and cooking is fun! 🥖 = 🎉
 
-**[Live Preview]**(https://quantapastamadre.netlify.app/)
+**[Live Preview](https://quantapastamadre.netlify.app/)**
 
 
 ## Available Scripts
