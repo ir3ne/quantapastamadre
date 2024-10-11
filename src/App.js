@@ -59,6 +59,9 @@ class App extends React.Component {
   }
 
   setIngredients(flourQuantity) {
+	this.setState({
+        showIngredients: false,
+      });
     // this function returns the ingredients quantity for the amount of flour
     this.setState({
       ingredients: this.calcIngredientAmounts(flourQuantity),
