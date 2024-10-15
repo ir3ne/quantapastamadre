@@ -5,11 +5,11 @@ import classNames from './Info.module.scss';
 
 const Info = () => {
   return (
-    <div id="info" class={classNames.info}>
+    <div id="info" className={classNames.info}>
       {/* <span id="close-info" class={classNames.info__closeBtn} onClick={closeInfo}>
         <img src={close} alt="" />
       </span> */}
-      Inserisci i grammi di farina che vuoi usare e verranno calcolate 
+      Inserisci i grammi di farina che vuoi usare e verranno calcolate
       le giuste quantità degli altri ingredienti per fare un pane eccellente!
     </div>
   );
