@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import classNames from './FlourInput.module.scss';
 import clear from '../../assets/images/clear.svg';
 
 const FlourInput = (props) => {
-  const { onFlourQtyChange , flourQty, clearInput } = props;
+  const { onFlourQtyChange, clearInput } = props;
+  const [flourQty, setFlourQty] = useState('');
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    // Focus the input element when the component mounts
+    inputRef.current.focus();
+  }, []);
+
+  const handleInputChange = (e) => {
+    const newValue = e.target.value;
+    setFlourQty(newValue);
+    onFlourQtyChange(newValue);
+  };
+
+  const handleClearInput = () => {
+    setFlourQty('');
+    clearInput();
+  };
 
   return (
     <div className={classNames.flourInputContainer}>
@@ -12,16 +30,16 @@ const FlourInput = (props) => {
           type="number"
           id="flour"
           className={classNames.flourInput}
-          onChange={(e) => {
-            onFlourQtyChange(e.target.value);
-          }}
+          value={flourQty}
+          onChange={handleInputChange}
+          ref={inputRef}
         />
-       <button
+        <button
           id="clearInput"
           className={classNames.flourInputClearBtn}
-          onClick={clearInput}
-          disabled={flourQty > 0 ? false : true}
-          >
+          onClick={handleClearInput}
+          disabled={!flourQty}
+        >
           <img src={clear} alt="" />
         </button>
       </div>
