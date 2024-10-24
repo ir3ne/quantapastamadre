@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import classNames from './FlourInput.module.scss';
 import clear from '../../assets/images/clear.svg';
+import {blockInvalidChar} from '../../common/common';
 
 const FlourInput = (props) => {
   const { onFlourQtyChange, clearInput } = props;
@@ -31,6 +32,7 @@ const FlourInput = (props) => {
           id="flour"
           className={classNames.flourInput}
           value={flourQty}
+		  onKeyDown={blockInvalidChar}
           onChange={handleInputChange}
           ref={inputRef}
         />
